@@ -766,7 +766,9 @@ class ObservabilityStack(BaseStack):
                         cloudwatch.GraphWidget(
                             title="Placeholder",
                             left=[availability_metric],
-                            left_y_axis=cloudwatch.YAxisProps(min=0),
+                            left_y_axis=cloudwatch.YAxisProps(
+                                min=0, show_units=False, label="%"
+                            ),
                             stacked=False,
                             live_data=False,
                             height=4,
@@ -799,7 +801,9 @@ class ObservabilityStack(BaseStack):
                         cloudwatch.GraphWidget(
                             title="Availability",
                             left=[availability_metric],
-                            left_y_axis=cloudwatch.YAxisProps(min=0),
+                            left_y_axis=cloudwatch.YAxisProps(
+                                min=0, show_units=False, label="%"
+                            ),
                             stacked=False,
                             live_data=False,
                             height=4,
@@ -827,7 +831,9 @@ class ObservabilityStack(BaseStack):
                                 xray_requests_metric,
                                 xray_fault_rate_expression_metric,
                             ],
-                            left_y_axis=cloudwatch.YAxisProps(min=0),
+                            left_y_axis=cloudwatch.YAxisProps(
+                                min=0, show_units=False, label="Count"
+                            ),
                             stacked=False,
                             live_data=False,
                             height=4,
@@ -847,7 +853,9 @@ class ObservabilityStack(BaseStack):
                         cloudwatch.GraphWidget(
                             title="Latency",
                             left=[xray_latency_metric_new],
-                            left_y_axis=cloudwatch.YAxisProps(min=0, label="Seconds"),
+                            left_y_axis=cloudwatch.YAxisProps(
+                                min=0, show_units=False, label="Seconds"
+                            ),
                             stacked=False,
                             live_data=False,
                             height=4,
