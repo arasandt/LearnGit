@@ -297,12 +297,12 @@ class ObservabilityStack(BaseStack):
         )
 
         instance_ebs_throughput_metric = cloudwatch.MathExpression(
-            expression="m1 + m2",
+            expression="(m1 + m2) / PERIOD(m1)",
             using_metrics={
                 "m1": instance_ebs_read_metric,
                 "m2": instance_ebs_write_metric,
             },
-            label="ThroughPut",
+            label="ThroughPut / Sec",
             period=Duration.minutes(5),
         )
 
@@ -888,7 +888,7 @@ class ObservabilityStack(BaseStack):
                         height=3,
                     ),
                     cloudwatch.SingleValueWidget(
-                        title="Disk (Total)",
+                        title="Disk",
                         metrics=[instance_ebs_throughput_metric],
                         set_period_to_time_range=True,
                         width=3,
