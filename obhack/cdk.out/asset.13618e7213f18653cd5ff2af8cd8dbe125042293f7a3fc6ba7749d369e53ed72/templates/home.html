@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/{{ app }}/login">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+    </div> 
+    <br>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <br>
+    <div>
+        <input type="submit" value="Login">
+    </div>
+</form>
+<form action="/{{ app }}/users">
+    <div>
+        <input type="submit" value="Users">
+    </div>
+</form>
+<a href="/" style="text-decoration:none">
+    <button style="margin-top:20px">Back to Home</button>
+</a>
+{% endblock %}

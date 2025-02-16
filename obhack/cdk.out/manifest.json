@@ -1,0 +1,739 @@
+{
+  "version": "39.0.0",
+  "artifacts": {
+    "obh-RolesStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "obh-RolesStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "obh-RolesStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://127537946772/us-east-1",
+      "properties": {
+        "templateFile": "obh-RolesStack.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "App": "ObserveHack",
+          "Module": "ObserveHack",
+          "Namespace": "obh"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-deploy-role-127537946772-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-cfn-exec-role-127537946772-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-127537946772-us-east-1/9c1b7a197faba9902b8b28a6637acaca000730e09bb48b2ed8e1e3efc48365d9.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "obh-RolesStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-lookup-role-127537946772-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "obh-RolesStack.assets"
+      ],
+      "metadata": {
+        "/obh-RolesStack": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "App",
+                "Value": "ObserveHack"
+              },
+              {
+                "Key": "Module",
+                "Value": "ObserveHack"
+              },
+              {
+                "Key": "Namespace",
+                "Value": "obh"
+              }
+            ]
+          }
+        ],
+        "/obh-RolesStack/obhinstance/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhinstance24373B94"
+          }
+        ],
+        "/obh-RolesStack/obhinstance/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhinstanceDefaultPolicyFAA7E4E8"
+          }
+        ],
+        "/obh-RolesStack/obhinstancessm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhinstancessm3B08DD1A"
+          }
+        ],
+        "/obh-RolesStack/obhbucket_deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhbucketdeploymentF77FB12D"
+          }
+        ],
+        "/obh-RolesStack/obhbucket_deploymentssm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhbucketdeploymentssmDD61118D"
+          }
+        ],
+        "/obh-RolesStack/obhcustommetrics/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhcustommetrics31A52C7B"
+          }
+        ],
+        "/obh-RolesStack/obhcustommetricsssm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhcustommetricsssm5D1C73F8"
+          }
+        ],
+        "/obh-RolesStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/obh-RolesStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/obh-RolesStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "obh-RolesStack"
+    },
+    "obh-ObservabilityStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "obh-ObservabilityStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "obh-ObservabilityStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://127537946772/us-east-1",
+      "properties": {
+        "templateFile": "obh-ObservabilityStack.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "App": "ObserveHack",
+          "Module": "ObserveHack",
+          "Namespace": "obh"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-deploy-role-127537946772-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-cfn-exec-role-127537946772-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-127537946772-us-east-1/ee0664d45448598bf29029fcc2c478829a7b7dfe144d72dc2cd7618bd9323f8e.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "obh-ObservabilityStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-lookup-role-127537946772-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "obh-RolesStack",
+        "obh-ObservabilityStack.assets"
+      ],
+      "metadata": {
+        "/obh-ObservabilityStack": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "App",
+                "Value": "ObserveHack"
+              },
+              {
+                "Key": "Module",
+                "Value": "ObserveHack"
+              },
+              {
+                "Key": "Namespace",
+                "Value": "obh"
+              }
+            ]
+          }
+        ],
+        "/obh-ObservabilityStack/--obh--rolesstack--instance.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrolesstackinstanceParameter"
+          }
+        ],
+        "/obh-ObservabilityStack/--obh--rolesstack--bucket_deployment.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrolesstackbucketdeploymentParameter"
+          }
+        ],
+        "/obh-ObservabilityStack/obhrolesstackbucket_deploymentssm/PolicyobhObservabilityStackobhrolesstackbucketdeploymentssmB5E3F702/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrolesstackbucketdeploymentssmPolicyobhObservabilityStackobhrolesstackbucketdeploymentssmB5E3F7026CCC3DDD"
+          }
+        ],
+        "/obh-ObservabilityStack/--obh--rolesstack--custommetrics.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrolesstackcustommetricsParameter"
+          }
+        ],
+        "/obh-ObservabilityStack/obhrolesstackcustommetricsssm/PolicyobhObservabilityStackobhrolesstackcustommetricsssm6EB8081D/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrolesstackcustommetricsssmPolicyobhObservabilityStackobhrolesstackcustommetricsssm6EB8081D4AC9291C"
+          }
+        ],
+        "/obh-ObservabilityStack/obhkey/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhkey854737E4"
+          }
+        ],
+        "/obh-ObservabilityStack/obhkey/Alias/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhkeyAlias6ED899F3"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnotificationtopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnotificationtopic29134B4A"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnotificationtopic/arasandt@virtusa.com/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnotificationtopicarasandtvirtusacom1D2CB422"
+          }
+        ],
+        "/obh-ObservabilityStack/obhrumidentitypool": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrumidentitypool"
+          }
+        ],
+        "/obh-ObservabilityStack/obhrumunauthenticatedrole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrumunauthenticatedrole0081DF19"
+          }
+        ],
+        "/obh-ObservabilityStack/obhrumidentitypoolroleattachment": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhrumidentitypoolroleattachment"
+          }
+        ],
+        "/obh-ObservabilityStack/obh-127537946772buildbucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obh127537946772buildbucketEE3FBAFB"
+          }
+        ],
+        "/obh-ObservabilityStack/obh-127537946772buildbucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obh127537946772buildbucketPolicyEB0518B5"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapp/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappAwsCliLayer5F11EEEE"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapp/CustomResource-2048MiB-10240MiB/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappCustomResource2048MiB10240MiBBBF5E261"
+          }
+        ],
+        "/obh-ObservabilityStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C2048MiB10240MiB": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-singleton",
+            "data": true
+          },
+          {
+            "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+            "data": 2
+          },
+          {
+            "type": "aws:cdk:is-custom-resource-handler-singleton",
+            "data": true
+          },
+          {
+            "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+            "data": 2
+          }
+        ],
+        "/obh-ObservabilityStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C2048MiB10240MiB/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C2048MiB10240MiB71038D4D"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapp/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappAwsCliLayer2E1007BE"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapp/CustomResource-2048MiB-10240MiB/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappCustomResource2048MiB10240MiB6486B268"
+          }
+        ],
+        "/obh-ObservabilityStack/obhmonitor": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhmonitor"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappenvvars/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappenvvars32A1E9D4"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappenvvars/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappenvvars1D54F3FC"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalphasg/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalphasgFEE41B31"
+          }
+        ],
+        "/obh-ObservabilityStack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalphainstanceprofile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalphainstanceprofile"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalpha": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalpha"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapphb/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusapphbArtifactsBucket398CB368"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapphb/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusapphbArtifactsBucketPolicy48A28EB1"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapphb/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusapphbServiceRoleAEA49C57"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapphb/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusapphbSecurityGroup371B9C10"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapphb/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusapphbCF8758AA"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappapi/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappapiArtifactsBucket213AA282"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappapi/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappapiArtifactsBucketPolicy6BFE8693"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappapi/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappapiServiceRole856842E4"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappapi/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappapiSecurityGroup4C4F320E"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappapi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappapi846F1E79"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapphb/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapphbArtifactsBucket100834A6"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapphb/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapphbArtifactsBucketPolicyCEEC16FD"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapphb/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapphbServiceRole83BB099F"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapphb/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapphbSecurityGroup38FFC1A4"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapphb/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapphbF5B12AD0"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappapi/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappapiArtifactsBucket28EDD507"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappapi/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappapiArtifactsBucketPolicy5E75BBDA"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappapi/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappapiServiceRoleC4A029FF"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappapi/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappapiSecurityGroup70837C50"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappapi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappapi6E3C6539"
+          }
+        ],
+        "/obh-ObservabilityStack/obhworkflow/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhworkflowArtifactsBucket3E8D629D"
+          }
+        ],
+        "/obh-ObservabilityStack/obhworkflow/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhworkflowArtifactsBucketPolicy45C89629"
+          }
+        ],
+        "/obh-ObservabilityStack/obhworkflow/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhworkflowServiceRoleA0FC5196"
+          }
+        ],
+        "/obh-ObservabilityStack/obhworkflow/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhworkflowSecurityGroup23351951"
+          }
+        ],
+        "/obh-ObservabilityStack/obhworkflow/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhworkflow5A0E04B5"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapplatencyslo": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapplatencyslo"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappavailabilityslo": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappavailabilityslo"
+          }
+        ],
+        "/obh-ObservabilityStack/obhdashboard/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhdashboardE3423DFA"
+          }
+        ],
+        "/obh-ObservabilityStack/obhgunicornanamoly": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhgunicornanamoly"
+          }
+        ],
+        "/obh-ObservabilityStack/obhgunicornanamolyalarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhgunicornanamolyalarm82F611DD"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalphadiskusederrors/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalphadiskusederrorsC9542910"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalphamemusederrors/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalphamemusederrors9C43559F"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalphacpuusageactiveerrors/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalphacpuusageactiveerrors6162F188"
+          }
+        ],
+        "/obh-ObservabilityStack/obhalphadownerrors/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhalphadownerrors54F23B51"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusapptrialanomalydetectoralarm": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusapptrialanomalydetectoralarm"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnexusappavailabilitysloalarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnexusappavailabilitysloalarmE9062A24"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleapptrialanomalydetectoralarm": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleapptrialanomalydetectoralarm"
+          }
+        ],
+        "/obh-ObservabilityStack/obhnobleappavailabilitysloalarm/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhnobleappavailabilitysloalarm3A669CA1"
+          }
+        ],
+        "/obh-ObservabilityStack/obhcustommetrics/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhcustommetrics31A52C7B"
+          }
+        ],
+        "/obh-ObservabilityStack/obhcustommetrics/EventInvokeConfig/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhcustommetricsEventInvokeConfig3F9E6F69"
+          }
+        ],
+        "/obh-ObservabilityStack/obhcustommetricsrule/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhcustommetricsruleDE9A0066"
+          }
+        ],
+        "/obh-ObservabilityStack/obhcustommetricsrule/AllowEventRuleobhObservabilityStackobhcustommetrics3B0A1EC8": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhcustommetricsruleAllowEventRuleobhObservabilityStackobhcustommetrics3B0A1EC84D2CCFD6"
+          }
+        ],
+        "/obh-ObservabilityStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/obh-ObservabilityStack/Exports/Output{\"Ref\":\"AWS::StackId\"}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputRefAWSStackIdB2DD5BAA"
+          }
+        ],
+        "/obh-ObservabilityStack/Exports/Output{\"Fn::GetAtt\":[\"obhalpha\",\"InstanceId\"]}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ExportsOutputFnGetAttobhalphaInstanceIdE90E6C06"
+          }
+        ],
+        "/obh-ObservabilityStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/obh-ObservabilityStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "obh-ObservabilityStack"
+    },
+    "obh-AppInsightsStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "obh-AppInsightsStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "obh-AppInsightsStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://127537946772/us-east-1",
+      "properties": {
+        "templateFile": "obh-AppInsightsStack.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "App": "ObserveHack",
+          "Module": "ObserveHack",
+          "Namespace": "obh"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-deploy-role-127537946772-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-cfn-exec-role-127537946772-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-127537946772-us-east-1/a90f8d5cf265f3acfd133e6c2c4f4b15b94748651adb0c2965debc8955e9d86e.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "obh-AppInsightsStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-lookup-role-127537946772-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "obh-ObservabilityStack",
+        "obh-AppInsightsStack.assets"
+      ],
+      "metadata": {
+        "/obh-AppInsightsStack": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "App",
+                "Value": "ObserveHack"
+              },
+              {
+                "Key": "Module",
+                "Value": "ObserveHack"
+              },
+              {
+                "Key": "Namespace",
+                "Value": "obh"
+              }
+            ]
+          }
+        ],
+        "/obh-AppInsightsStack/obhresources": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhresources"
+          }
+        ],
+        "/obh-AppInsightsStack/obhapplication": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "obhapplication"
+          }
+        ],
+        "/obh-AppInsightsStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/obh-AppInsightsStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/obh-AppInsightsStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "obh-AppInsightsStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

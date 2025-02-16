@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style='color:blue'>Logged in as {{ username }}</h1>
+<a href="/{{app}}" style="text-decoration:none">
+    <button style="margin-top:20px">Back to App</button>
+</a>
+<a href="/" style="text-decoration:none">
+    <button style="margin-top:20px">Back to Home</button>
+</a>
+{% endblock %}

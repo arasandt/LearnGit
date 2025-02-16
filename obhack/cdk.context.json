@@ -1,0 +1,41 @@
+{
+  "vpc-provider:account=127537946772:filter.vpc-id=vpc-02509352c2f3db630:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-02509352c2f3db630",
+    "vpcCidrBlock": "10.104.144.0/22",
+    "ownerAccountId": "127537946772",
+    "availabilityZones": [],
+    "vpnGatewayId": "vgw-085891ba3e8b25dbb",
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-035de440252ca0055",
+            "cidr": "10.104.146.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-02929c8716c0566a1"
+          },
+          {
+            "subnetId": "subnet-01091b8aa2c63829e",
+            "cidr": "10.104.144.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-02929c8716c0566a1"
+          },
+          {
+            "subnetId": "subnet-0146626e0e92bdc4c",
+            "cidr": "10.104.147.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-02929c8716c0566a1"
+          },
+          {
+            "subnetId": "subnet-04766487e21faba3e",
+            "cidr": "10.104.145.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-02929c8716c0566a1"
+          }
+        ]
+      }
+    ]
+  }
+}

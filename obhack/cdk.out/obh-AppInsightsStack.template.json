@@ -1,0 +1,125 @@
+{
+ "Resources": {
+  "obhresources": {
+   "Type": "AWS::ResourceGroups::Group",
+   "Properties": {
+    "Description": "Resource group for obh-ObservabilityStack stack",
+    "Name": "obhresources",
+    "ResourceQuery": {
+     "Query": {
+      "ResourceTypeFilters": [
+       "AWS::AllSupported"
+      ],
+      "StackIdentifier": {
+       "Fn::ImportValue": "obh-ObservabilityStack:ExportsOutputRefAWSStackIdB2DD5BAA"
+      }
+     },
+     "Type": "CLOUDFORMATION_STACK_1_0"
+    },
+    "Tags": [
+     {
+      "Key": "App",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Module",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Namespace",
+      "Value": "obh"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-AppInsightsStack/obhresources"
+   }
+  },
+  "obhapplication": {
+   "Type": "AWS::ApplicationInsights::Application",
+   "Properties": {
+    "AutoConfigurationEnabled": true,
+    "CWEMonitorEnabled": true,
+    "ComponentMonitoringSettings": [
+     {
+      "ComponentARN": {
+       "Fn::Join": [
+        "",
+        [
+         "arn:aws:ec2:us-east-1:127537946772:instance/",
+         {
+          "Fn::ImportValue": "obh-ObservabilityStack:ExportsOutputFnGetAttobhalphaInstanceIdE90E6C06"
+         }
+        ]
+       ]
+      },
+      "ComponentConfigurationMode": "DEFAULT",
+      "Tier": "DEFAULT"
+     }
+    ],
+    "OpsCenterEnabled": true,
+    "ResourceGroupName": "obhresources",
+    "Tags": [
+     {
+      "Key": "App",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Module",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Namespace",
+      "Value": "obh"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-AppInsightsStack/obhapplication"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzQ31zNQTCwv1k1OydbNyUzSqw4uSUzO1glKLc4vLUpO1QHKxVcXQXnpRfmlBcV6zml57iCWTmJBQU5mcmJJZn5eZl5xZnpGCVjSESFcqwPkwwyr1QmoLMnIz9M31jM01DNVzCrOzNQtKs0rycxN1QuC0ACoGrLPlAAAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-AppInsightsStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

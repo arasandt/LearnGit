@@ -1,0 +1,20 @@
+{
+  "version": "39.0.0",
+  "files": {
+    "a90f8d5cf265f3acfd133e6c2c4f4b15b94748651adb0c2965debc8955e9d86e": {
+      "source": {
+        "path": "obh-AppInsightsStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "127537946772-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-127537946772-us-east-1",
+          "objectKey": "a90f8d5cf265f3acfd133e6c2c4f4b15b94748651adb0c2965debc8955e9d86e.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::127537946772:role/cdk-hnb659fds-file-publishing-role-127537946772-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

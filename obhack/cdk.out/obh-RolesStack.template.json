@@ -1,0 +1,356 @@
+{
+ "Resources": {
+  "obhinstance24373B94": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Role for instance",
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEC2FullAccess"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonS3FullAccess"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AWSXRayDaemonWriteAccess"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/CloudWatchAgentServerPolicy"
+       ]
+      ]
+     }
+    ],
+    "RoleName": "obhinstance",
+    "Tags": [
+     {
+      "Key": "App",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Module",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Namespace",
+      "Value": "obh"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhinstance/Resource"
+   }
+  },
+  "obhinstanceDefaultPolicyFAA7E4E8": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "cloudwatch:PutMetricData",
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "obhinstanceDefaultPolicyFAA7E4E8",
+    "Roles": [
+     {
+      "Ref": "obhinstance24373B94"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhinstance/DefaultPolicy/Resource"
+   }
+  },
+  "obhinstancessm3B08DD1A": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Name": "/obh/rolesstack/instance",
+    "Tags": {
+     "App": "ObserveHack",
+     "Module": "ObserveHack",
+     "Namespace": "obh"
+    },
+    "Type": "String",
+    "Value": {
+     "Fn::GetAtt": [
+      "obhinstance24373B94",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhinstancessm/Resource"
+   }
+  },
+  "obhbucketdeploymentF77FB12D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Role for bucket_deployment",
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/CloudWatchFullAccess"
+       ]
+      ]
+     }
+    ],
+    "RoleName": "obhbucket_deployment",
+    "Tags": [
+     {
+      "Key": "App",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Module",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Namespace",
+      "Value": "obh"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhbucket_deployment/Resource"
+   }
+  },
+  "obhbucketdeploymentssmDD61118D": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Name": "/obh/rolesstack/bucket_deployment",
+    "Tags": {
+     "App": "ObserveHack",
+     "Module": "ObserveHack",
+     "Namespace": "obh"
+    },
+    "Type": "String",
+    "Value": {
+     "Fn::GetAtt": [
+      "obhbucketdeploymentF77FB12D",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhbucket_deploymentssm/Resource"
+   }
+  },
+  "obhcustommetrics31A52C7B": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Role for custommetrics",
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/CloudWatchFullAccess"
+       ]
+      ]
+     }
+    ],
+    "RoleName": "obhcustommetrics",
+    "Tags": [
+     {
+      "Key": "App",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Module",
+      "Value": "ObserveHack"
+     },
+     {
+      "Key": "Namespace",
+      "Value": "obh"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhcustommetrics/Resource"
+   }
+  },
+  "obhcustommetricsssm5D1C73F8": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Name": "/obh/rolesstack/custommetrics",
+    "Tags": {
+     "App": "ObserveHack",
+     "Module": "ObserveHack",
+     "Namespace": "obh"
+    },
+    "Type": "String",
+    "Value": {
+     "Fn::GetAtt": [
+      "obhcustommetrics31A52C7B",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/obhcustommetricsssm/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMWw7CIBRE19J/uIqN6QLcAMEFNBSvei2PBGhMQ9i7lurXmcnkzAnEMMCx0+/EzW3mliYo16zNzBSmsESD7LuNhbSDooJFdrn7RhksmXWre6osJbfJkfxD6qgdZoxt/5dam/07rkyu+Rn8oQch4Ny9EhGPi8/kENTOD4Sxx7KgAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "obh-RolesStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
