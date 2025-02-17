@@ -43,13 +43,6 @@ class ObservabilityStack(BaseStack):
         """
         pass
 
-        self.activity_topic = sns.Topic(
-            self,
-            f"{self.config.namespace}topic",
-            topic_name=self.config.namespace,
-            master_key=self.activity_key,
-        )
-
     def create_keys(self, roles=[]):
         self.generic_key = kms.Key(
             self,
@@ -91,23 +84,21 @@ class ObservabilityStack(BaseStack):
     def output_to_ssm(self):
         ssm.StringParameter(
             self,
-            f"{self.config.namespace}keyssm",
-            parameter_name=f"{self.ssm_prefix}/key",
-            string_value=self.activity_key.key_arn,
+            f"{self.config.namespace}appinsightsstackidssm",
+            parameter_name=f"{self.ssm_prefix}/appinsightsstackid",
+            string_value=self.stack_id,
         )
-
         ssm.StringParameter(
             self,
-            f"{self.config.namespace}topicssm",
-            parameter_name=f"{self.ssm_prefix}/topic",
-            string_value=self.activity_topic.topic_arn,
+            f"{self.config.namespace}appinsightsstacknamessm",
+            parameter_name=f"{self.ssm_prefix}/appinsightsstackname",
+            string_value=self.stack_name,
         )
-
         ssm.StringParameter(
             self,
-            f"{self.config.namespace}bucketssm",
-            parameter_name=f"{self.ssm_prefix}/bucket",
-            string_value=self.activity_bucket.bucket_name,
+            f"{self.config.namespace}appinsightscomponentnamessm",
+            parameter_name=f"{self.ssm_prefix}/appinsightscomponentname",
+            string_value=self.alpha_instance.attr_instance_id,
         )
 
     def create_ec2(self):
@@ -1362,4 +1353,4 @@ class ObservabilityStack(BaseStack):
 
         # self.assign_permissions()
 
-        # self.output_to_ssm()
+        self.output_to_ssm()

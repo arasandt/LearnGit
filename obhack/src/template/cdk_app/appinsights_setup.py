@@ -27,7 +27,8 @@ class AppInsightsStack(BaseStack):
             self,
             f"{self.config.namespace}application",
             resource_group_name=f"{self.config.namespace}resources",
-            auto_configuration_enabled=True,
+            auto_configuration_enabled=False,
+            attach_missing_permission=False,
             cwe_monitor_enabled=True,
             ops_center_enabled=True,
             component_monitoring_settings=[
@@ -44,17 +45,18 @@ class AppInsightsStack(BaseStack):
         Initialization for CDK
         """
 
-        self.appinsightsstack = kwargs.pop("appinsightsstack")
-        (
-            self.app_stack_id,
-            self.app_stack_name,
-            self.app_component_name,
-        ) = (
-            self.appinsightsstack["stack_id"],
-            self.appinsightsstack["stack_name"],
-            self.appinsightsstack["component_name"],
-        )
-
         super().__init__(scope, construct_id, **kwargs)
+
+        observability_stack = "observabilitystack"
+
+        self.app_stack_id = self.from_ssm(
+            f"/{self.config.namespace}/{observability_stack}/appinsightsstackid"
+        )
+        self.app_stack_name = self.from_ssm(
+            f"/{self.config.namespace}/{observability_stack}/appinsightsstackname"
+        )
+        self.app_component_name = self.from_ssm(
+            f"/{self.config.namespace}/{observability_stack}/appinsightscomponentname"
+        )
 
         self.create_application_insights()

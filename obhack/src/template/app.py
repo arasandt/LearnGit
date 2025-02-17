@@ -106,56 +106,12 @@ def main():
         stack_name=f"{config.namespace}-AppInsightsStack",
         logger=logger,
         config=config,
-        appinsightsstack={
-            "stack_id": observability_stack.stack_id,
-            "stack_name": observability_stack.stack_name,
-            "component_name": observability_stack.alpha_instance.attr_instance_id,
-        },
     )
     appinsights_stack.add_dependency(observability_stack)
 
     Tags.of(appinsights_stack).add("App", config.app_name_tag)
     Tags.of(appinsights_stack).add("Module", config.module_name_tag)
     Tags.of(appinsights_stack).add("Namespace", config.namespace)
-
-    # vectordb_stack = VectorDBStack(
-    #     app,
-    #     f"{config.namespace}-VectorDBStack",
-    #     stack_name=f"{config.namespace}-VectorDBStack",
-    #     logger=logger,
-    #     config=config,
-    # )
-    # vectordb_stack.add_dependency(ingestion_stack)
-
-    # Tags.of(vectordb_stack).add("Name", config.app_name_tag)
-    # Tags.of(vectordb_stack).add("Module", config.module_name_tag)
-    # Tags.of(vectordb_stack).add("Namespace", config.namespace)
-
-    # agents_stack = AgentsStack(
-    #     app,
-    #     f"{config.namespace}-AgentsStack",
-    #     stack_name=f"{config.namespace}-AgentsStack",
-    #     logger=logger,
-    #     config=config,
-    # )
-    # agents_stack.add_dependency(vectordb_stack)
-
-    # Tags.of(agents_stack).add("Name", config.app_name_tag)
-    # Tags.of(agents_stack).add("Module", config.module_name_tag)
-    # Tags.of(agents_stack).add("Namespace", config.namespace)
-
-    # streamlit_stack = StreamlitStack(
-    #     app,
-    #     f"{config.namespace}-StreamlitStack",
-    #     stack_name=f"{config.namespace}-StreamlitStack",
-    #     logger=logger,
-    #     config=config,
-    # )
-    # streamlit_stack.add_dependency(agents_stack)
-
-    # Tags.of(streamlit_stack).add("Name", config.app_name_tag)
-    # Tags.of(streamlit_stack).add("Module", config.module_name_tag)
-    # Tags.of(streamlit_stack).add("Namespace", config.namespace)
 
     # Synthesize it
     logger.info("Synthesizing stack")
