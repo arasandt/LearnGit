@@ -7,7 +7,7 @@ LAMBDA_LAYERS_BUILD:
 ASSET_LOCATION : src/assets
 INIT_SCRIPT: src/template/cdk_app/ec2_init.sh
 CLOUDWATCH_AGENT_CONFIG: src/template/cdk_app/cloudwatch_agent_config.json
-INSTANCE_STATIC_IP: 10.104.146.218
+INSTANCE_STATIC_IP: 10.104.146.219
 NGINX_APPS:
   nexusapp: 80
   nobleapp: 80

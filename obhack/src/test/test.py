@@ -56,8 +56,8 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Config:
-    base_url: str = "http://10.104.146.218/"
-    # base_url: str = "http://10.104.146.219/"
+    # base_url: str = "http://10.104.146.218/"
+    base_url: str = "http://10.104.146.219/"
     max_processes: int = 10
 
 

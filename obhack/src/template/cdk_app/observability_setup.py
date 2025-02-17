@@ -694,6 +694,14 @@ class ObservabilityStack(BaseStack):
                 color=cloudwatch.Color.GREEN,
             )
 
+            network_usage_metric = cloudwatch.Metric(
+                namespace="AWS/EC2",
+                metric_name="NetworkAddressUsage",
+                dimensions_map={"Per-VPC Metrics": self.vpc.vpc_id},
+                statistic="Maximum",
+                period=Duration.minutes(5),
+            )
+
             if app == "nobleapp":
                 volume_metric = cloudwatch.Metric(
                     namespace="AWS/X-Ray",
@@ -844,8 +852,7 @@ class ObservabilityStack(BaseStack):
                     cloudwatch.Column(
                         cloudwatch.GraphWidget(
                             title="Trial Users Anomaly",
-                            left=[username_trial_custom_metric_anamoly],
-                            # left=[username_trial_custom_metric_anamoly_detection],
+                            left=[username_trial_custom_metric_anamoly_detection],
                             left_y_axis=cloudwatch.YAxisProps(min=0),
                             height=4,
                             width=5,
@@ -1204,10 +1211,10 @@ class ObservabilityStack(BaseStack):
     def create_log_anomaly_detector(self):
         log_anamoly_detector = logs.CfnLogAnomalyDetector(
             self,
-            f"{self.config.namespace}gunicornanamoly",
+            f"{self.config.namespace}gunicornanamoly1",
             anomaly_visibility_time=7,
-            detector_name=f"{self.config.namespace}gunicornanamoly",
-            evaluation_frequency="FIFTEEN_MIN",
+            detector_name=f"{self.config.namespace}gunicornanamoly1",
+            evaluation_frequency="FIVE_MIN",
             filter_pattern="Admin login not allowed",
             log_group_arn_list=[
                 f"arn:aws:logs:{self.config.region}:{self.config.account}:log-group:{self.config.namespace}-gunicorn-error-logs:*"
@@ -1221,7 +1228,7 @@ class ObservabilityStack(BaseStack):
             namespace="AWS/Logs",
             dimensions_map={
                 "LogAnomalyDetector": log_anamoly_detector.detector_name,
-                "LogAnomalyPriority": "HIGH",
+                "LogAnomalyPriority": "LOW",
             },
         )
 
